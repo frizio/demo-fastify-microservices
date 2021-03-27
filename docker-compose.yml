@@ -1,6 +1,8 @@
 ---
 version: '3.6'
+
 services:
+
   mongodb-web:
     image: mongo:latest
     container_name: mongodb-web
@@ -8,3 +10,21 @@ services:
       - "27017:27017"
     expose: 
       - "27017"
+
+  auth-service:
+    container_name: auth-service
+    restart: always
+    build: ./auth
+    command: ["npm", "run", "dev"]
+    ports:
+      - "3001:3001"
+    expose:
+      - "3001"
+    environment:
+      - FASTIFY_PORT=3001
+    volumes:
+      - ./auth/:/usr/src/app
+      - /usr/src/app/node_modules
+    links:
+      - mongodb-web
+

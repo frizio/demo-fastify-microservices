@@ -28,3 +28,20 @@ services:
     links:
       - mongodb-web
 
+  ticket-service:
+    container_name: ticket-service
+    restart: always
+    build: ./tickets
+    command: ["npm", "run", "dev"]
+    ports:
+      - "3002:3002"
+    expose:
+      - "3002"
+    environment:
+      - FASTIFY_PORT=3002
+    volumes:
+      - ./tickets/:/usr/src/app
+      - /usr/src/app/node_modules
+    links:
+      - mongodb-web
+

@@ -1,3 +1,6 @@
+
+'use strict'
+
 const S = require('fluent-schema')
 
 module.exports = async function(fastify, opts) {

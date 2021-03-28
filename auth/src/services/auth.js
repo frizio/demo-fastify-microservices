@@ -1,3 +1,5 @@
+'use strict'
+
 const securePassword = require('secure-password')
 const S = require('fluent-schema')
 

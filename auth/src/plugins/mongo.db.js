@@ -1,3 +1,5 @@
+'use strict'
+
 const fp = require('fastify-plugin')
 const isDocker = require('is-docker')
 const MongoDB = require('fastify-mongodb')

@@ -45,3 +45,19 @@ services:
     links:
       - mongodb-web
 
+  users-service:
+    container_name: users-service
+    restart: always
+    build: ./users
+    command: ["npm", "run", "dev"]
+    ports:
+      - "3003:3003"
+    expose:
+      - "3003"
+    environment:
+      - FASTIFY_PORT=3003
+    volumes:
+      - ./users/:/usr/src/app
+      - /usr/src/app/node_modules
+    links:
+      - mongodb-web
